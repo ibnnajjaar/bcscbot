@@ -763,6 +763,39 @@ select {
 [type='file']:focus {
 	outline: 1px auto -webkit-focus-ring-color;
 }
+.container {
+	width: 100%;
+}
+@media (min-width: 640px) {
+
+	.container {
+		max-width: 640px;
+	}
+}
+@media (min-width: 768px) {
+
+	.container {
+		max-width: 768px;
+	}
+}
+@media (min-width: 1024px) {
+
+	.container {
+		max-width: 1024px;
+	}
+}
+@media (min-width: 1280px) {
+
+	.container {
+		max-width: 1280px;
+	}
+}
+@media (min-width: 1536px) {
+
+	.container {
+		max-width: 1536px;
+	}
+}
 .prose {
 	color: #374151;
 	max-width: 65ch;
@@ -1104,6 +1137,14 @@ select {
 	margin-left: auto;
 	margin-right: auto;
 }
+.-my-2 {
+	margin-top: -0.5rem;
+	margin-bottom: -0.5rem;
+}
+.mx-20 {
+	margin-left: 5rem;
+	margin-right: 5rem;
+}
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -1176,14 +1217,26 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mb-2 {
+	margin-bottom: 0.5rem;
+}
+.mb-3 {
+	margin-bottom: 0.75rem;
+}
 .block {
 	display: block;
+}
+.inline-block {
+	display: inline-block;
 }
 .flex {
 	display: flex;
 }
 .inline-flex {
 	display: inline-flex;
+}
+.table {
+	display: table;
 }
 .grid {
 	display: grid;
@@ -1266,6 +1319,9 @@ select {
 .min-w-0 {
 	min-width: 0px;
 }
+.min-w-full {
+	min-width: 100%;
+}
 .max-w-screen-xl {
 	max-width: 1280px;
 }
@@ -1332,6 +1388,9 @@ select {
 .grid-cols-1 {
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 }
+.flex-row {
+	flex-direction: row;
+}
 .flex-col {
 	flex-direction: column;
 }
@@ -1374,8 +1433,20 @@ select {
 	margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+	--tw-divide-y-reverse: 0;
+	border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+	border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+.divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+	--tw-divide-opacity: 1;
+	border-color: rgba(229, 231, 235, var(--tw-divide-opacity));
+}
 .overflow-hidden {
 	overflow: hidden;
+}
+.overflow-x-auto {
+	overflow-x: auto;
 }
 .overflow-y-auto {
 	overflow-y: auto;
@@ -1386,6 +1457,9 @@ select {
 .truncate {
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.whitespace-nowrap {
 	white-space: nowrap;
 }
 .rounded-md {
@@ -1434,6 +1508,9 @@ select {
 .border-b {
 	border-bottom-width: 1px;
 }
+.border-r {
+	border-right-width: 1px;
+}
 .border-gray-300 {
 	--tw-border-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
@@ -1452,6 +1529,10 @@ select {
 .border-gray-100 {
 	--tw-border-opacity: 1;
 	border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+}
+.border-gray-400 {
+	--tw-border-opacity: 1;
+	border-color: rgba(156, 163, 175, var(--tw-border-opacity));
 }
 .bg-white {
 	--tw-bg-opacity: 1;
@@ -1514,6 +1595,9 @@ select {
 .p-6 {
 	padding: 1.5rem;
 }
+.p-8 {
+	padding: 2rem;
+}
 .px-4 {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -1570,6 +1654,10 @@ select {
 	padding-top: 2.5rem;
 	padding-bottom: 2.5rem;
 }
+.px-8 {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
 .pt-6 {
 	padding-top: 1.5rem;
 }
@@ -1603,11 +1691,17 @@ select {
 .pt-8 {
 	padding-top: 2rem;
 }
+.text-left {
+	text-align: left;
+}
 .text-center {
 	text-align: center;
 }
 .text-right {
 	text-align: right;
+}
+.align-middle {
+	vertical-align: middle;
 }
 .font-sans {
 	font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -1662,6 +1756,9 @@ select {
 }
 .tracking-widest {
 	letter-spacing: 0.1em;
+}
+.tracking-wider {
+	letter-spacing: 0.05em;
 }
 .text-gray-500 {
 	--tw-text-opacity: 1;
@@ -1870,6 +1967,10 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
+.hover\:text-indigo-900:hover {
+	--tw-text-opacity: 1;
+	color: rgba(49, 46, 129, var(--tw-text-opacity));
+}
 .focus\:z-10:focus {
 	z-index: 10;
 }
@@ -2011,6 +2112,11 @@ select {
 	.sm\:-my-px {
 		margin-top: -1px;
 		margin-bottom: -1px;
+	}
+
+	.sm\:-mx-6 {
+		margin-left: -1.5rem;
+		margin-right: -1.5rem;
 	}
 
 	.sm\:ml-3 {
@@ -2231,6 +2337,11 @@ select {
 
 	.lg\:col-span-4 {
 		grid-column: span 4 / span 4;
+	}
+
+	.lg\:-mx-8 {
+		margin-left: -2rem;
+		margin-right: -2rem;
 	}
 
 	.lg\:px-8 {
