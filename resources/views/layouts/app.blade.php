@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('vendors/css/sweetalert2.min.css') }}">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         @livewireStyles
@@ -40,7 +41,10 @@
         </div>
 
         @stack('modals')
-
         @livewireScripts
+
+        <script src="{{ asset('js/vendors.js') }}"></script>
+        @stack('scripts')
+
     </body>
 </html>

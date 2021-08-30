@@ -46,9 +46,17 @@ class SubjectsController extends Controller
         return view('admin.subjects.edit', compact('subject'));
     }
 
-    public function destroy(Subject $subject)
+    public function destroy(Subject $subject, Request $request)
     {
-        $subject->delete();
+        if (! $subject->delete()) {
+            if ($request->expectsJson()) {
+                return abort(403);
+            }
+        }
+
+        if ($request->expectsJson()) {
+            return true;
+        }
 
         return view('admin.subjects.index');
     }

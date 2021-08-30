@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-row justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Subjects') }}
+                {{ __('Subjects ddddd') }}
             </h2>
             <div>
                 <x-link-btn link="{{ route('admin.subjects.create') }}">{{ __('Create') }}</x-link-btn>
@@ -30,7 +30,7 @@
                                 <x-td>{{ $subject->lecturer }}</x-td>
                                 <x-td>
                                     <x-action link="{{ route('admin.subjects.edit', $subject) }}">{{ __("Edit") }}</x-action>
-                                    <x-action link="{{ route('admin.subjects.edit', $subject) }}">{{ __("Delete") }}</x-action>
+                                    <x-action data-delete-link="{{ route('admin.subjects.destroy', $subject) }}" link="{{ route('admin.subjects.edit', $subject) }}">{{ __("Delete") }}</x-action>
                                 </x-td>
                             </x-tr>
                         @endforeach
@@ -40,4 +40,47 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function (){
+
+                $('[data-delete-link]').on('click', function (e) {
+                    e.preventDefault();
+
+                    request_url = $(this).attr('data-delete-link');
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: request_url,
+                        }).done(function (result){
+                           console.log(result);
+                            if (result) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                            }
+                        });
+                    });
+                })
+            });
+
+        </script>
+
+    @endpush
+
 </x-app-layout>
+
+

@@ -12,6 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .scripts([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/sweetalert2/dist/sweetalert2.min.js'
+    ], 'public/js/vendors.js')
+    .css('node_modules/sweetalert2/dist/sweetalert2.min.css', 'vendors/css')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
