@@ -37,6 +37,7 @@ class AssessmentsController extends Controller
     {
         $assessment = new Assessment();
         $assessment->fill($assessmentsRequest->all());
+        $assessment->assessment_at = $assessmentsRequest->assessmentAt();
         $assessment->subject()->associate($assessmentsRequest->subject());
         $assessment->save();
 
@@ -46,6 +47,7 @@ class AssessmentsController extends Controller
     public function update(Assessment $assessment, AssessmentsRequest $assessmentsRequest): RedirectResponse
     {
         $assessment->update($assessmentsRequest->all());
+        $assessment->assessment_at = $assessmentsRequest->assessmentAt();
 
         if ($assessmentsRequest->subject()) {
             $assessment->subject()->associate($assessmentsRequest->subject());
