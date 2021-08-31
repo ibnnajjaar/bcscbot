@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AssessmentsController;
 use App\Http\Controllers\Api\PeriodsController;
 use App\Http\Controllers\Api\SubjectsController;
 use Illuminate\Http\Request;
@@ -26,4 +27,5 @@ Route::group([
 
     Route::get('subjects', [SubjectsController::class, 'index'])->name('subjects.index');
     Route::get('periods', [PeriodsController::class, 'index'])->name('periods.index');
+    Route::get('assessments', [AssessmentsController::class, 'index'])->name('assessments.index');
 });
