@@ -30,7 +30,13 @@
                                 <x-td>{{ $subject->lecturer }}</x-td>
                                 <x-td>
                                     <x-action link="{{ route('admin.subjects.edit', $subject) }}">{{ __("Edit") }}</x-action>
-                                    <x-action data-delete-link="{{ route('admin.subjects.destroy', $subject) }}" link="{{ route('admin.subjects.edit', $subject) }}">{{ __("Delete") }}</x-action>
+                                    <x-action
+                                        data-post
+                                        data-delete-link="{{ route('admin.subjects.destroy', $subject) }}"
+                                        data-request-type="DELETE"
+                                        data-request-data=""
+                                        data-redirect-url="{{ route('admin.subjects.index') }}"
+                                        link="{{ route('admin.subjects.edit', $subject) }}">{{ __("Delete") }}</x-action>
                                 </x-td>
                             </x-tr>
                         @endforeach
@@ -40,47 +46,6 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-        <script>
-            $(document).ready(function (){
-
-                $('[data-delete-link]').on('click', function (e) {
-                    e.preventDefault();
-
-                    request_url = $(this).attr('data-delete-link');
-
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-
-                        $.ajax({
-                            type: 'DELETE',
-                            url: request_url,
-                        }).done(function (result){
-                           console.log(result);
-                            if (result) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
-                            }
-                        });
-                    });
-                })
-            });
-
-        </script>
-
-    @endpush
-
 </x-app-layout>
 
 

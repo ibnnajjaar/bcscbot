@@ -4979,6 +4979,48 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__.default;
 alpinejs__WEBPACK_IMPORTED_MODULE_0__.default.start();
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(document).ready(function () {
+  $('[data-post]').on('click', function (e) {
+    var _$$data, _$$data2, _$$data3, _$$data4, _$$data5, _$$data6;
+
+    e.preventDefault();
+    var request_url = $(this).data('delete-link');
+    var request_type = $(this).data('request-type');
+    var request_data = (_$$data = $(this).data('request-data')) !== null && _$$data !== void 0 ? _$$data : {};
+    var redirect_url = $(this).data('redirect-url');
+    var swal_text = (_$$data2 = $(this).data('swal-text')) !== null && _$$data2 !== void 0 ? _$$data2 : 'This will delete the selected record';
+    var swal_confirm_button_text = (_$$data3 = $(this).data('swal-confirm-button-text')) !== null && _$$data3 !== void 0 ? _$$data3 : 'Delete';
+    var swal_icon = (_$$data4 = $(this).data('swal-icon')) !== null && _$$data4 !== void 0 ? _$$data4 : 'warning';
+    var swal_complete_title = (_$$data5 = $(this).data('swal-complete-title')) !== null && _$$data5 !== void 0 ? _$$data5 : 'Deleted!';
+    var swal_complete_text = (_$$data6 = $(this).data('swal-complete-text')) !== null && _$$data6 !== void 0 ? _$$data6 : 'Your file has been deleted.!';
+    Swal.fire({
+      title: 'Are you sure?',
+      text: swal_text,
+      icon: swal_icon,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: swal_confirm_button_text
+    }).then(function (result) {
+      $.ajax({
+        type: request_type,
+        url: request_url,
+        data: request_data
+      }).done(function (result) {
+        if (result) {
+          Swal.fire(swal_complete_title, swal_complete_text, 'success').then(function (result) {
+            window.location.href = redirect_url;
+          });
+        }
+      });
+    });
+  });
+});
 
 /***/ }),
 
