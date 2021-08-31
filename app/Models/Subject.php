@@ -15,6 +15,11 @@ class Subject extends Model
         'lecturer',
     ];
 
+    public function classes()
+    {
+        //
+    }
+
     public function scopeSearch($query, $search)
     {
         $search_term = $search . '%';
@@ -26,4 +31,7 @@ class Subject extends Model
     {
         $this->attributes['code'] = strtoupper($value);
     }
+
+
+
 }

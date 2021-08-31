@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SubjectsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+    'as' => 'api.'
+], function (){
+
+    Route::get('subjects', [SubjectsController::class, 'index'])->name('subjects.index');
+    Route::get('subjects/{subject}', [SubjectsController::class, 'show'])->name('subjects.show');
+
+
 });
