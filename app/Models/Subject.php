@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Subject extends Model
 {
@@ -15,9 +16,9 @@ class Subject extends Model
         'lecturer',
     ];
 
-    public function classes()
+    public function periods(): HasMany
     {
-        //
+        return $this->hasMany(Period::class);
     }
 
     public function scopeSearch($query, $search)
@@ -32,6 +33,9 @@ class Subject extends Model
         $this->attributes['code'] = strtoupper($value);
     }
 
-
+    public function getFormattedNameAttribute()
+    {
+        return __(':name (:code)', ['name' => $this->name, 'code' => $this->code]);
+    }
 
 }

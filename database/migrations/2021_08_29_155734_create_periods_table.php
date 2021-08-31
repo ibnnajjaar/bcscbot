@@ -16,8 +16,8 @@ class CreatePeriodsTable extends Migration
         Schema::create('periods', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->constrained()->cascadeOnDelete();
-            $table->dateTime('start_at');
-            $table->dateTime('end_at');
+            $table->time('start_at');
+            $table->time('end_at');
             $table->string('weekday');
             $table->text('details')->nullable();
             $table->timestamps();

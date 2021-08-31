@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PeriodsController;
 use App\Http\Controllers\Admin\SubjectsController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,6 @@ Route::group([
     function () {
 
     Route::resource('subjects', SubjectsController::class);
+    Route::resource('periods', PeriodsController::class);
 
 });

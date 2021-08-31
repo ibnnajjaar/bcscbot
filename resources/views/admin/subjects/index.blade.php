@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-row justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Subjects ddddd') }}
+                {{ __('Subjects') }}
             </h2>
             <div>
                 <x-link-btn link="{{ route('admin.subjects.create') }}">{{ __('Create') }}</x-link-btn>
