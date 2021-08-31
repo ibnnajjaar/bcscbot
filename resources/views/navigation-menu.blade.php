@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('admin.periods.index') }}" :active="request()->routeIs('admin.periods.*')">
                         {{ __('Periods') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.assessments.index') }}" :active="request()->routeIs('admin.assessments.*')">
+                        {{ __('Assessments') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
