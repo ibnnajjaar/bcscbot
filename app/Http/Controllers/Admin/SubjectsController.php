@@ -36,14 +36,14 @@ class SubjectsController
         $subject->fill($subjectsRequest->all());
         $subject->save();
 
-        return view('admin.subjects.edit', compact('subject'));
+        return redirect()->to(route('admin.subjects.edit', $subject));
     }
 
     public function update(Subject $subject, SubjectsRequest $subjectsRequest)
     {
         $subject->update($subjectsRequest->all());
 
-        return view('admin.subjects.edit', compact('subject'));
+        return redirect()->to(route('admin.subjects.edit', $subject));
     }
 
     public function destroy(Subject $subject, Request $request)
