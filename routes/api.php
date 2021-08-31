@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PeriodsController;
 use App\Http\Controllers\Api\SubjectsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,5 @@ Route::group([
 ], function (){
 
     Route::get('subjects', [SubjectsController::class, 'index'])->name('subjects.index');
-    Route::get('subjects/{subject}', [SubjectsController::class, 'show'])->name('subjects.show');
-
-
+    Route::get('periods', [PeriodsController::class, 'index'])->name('periods.index');
 });

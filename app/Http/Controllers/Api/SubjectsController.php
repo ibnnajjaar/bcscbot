@@ -13,13 +13,8 @@ class SubjectsController extends Controller
     public function index(Request $request): array
     {
         return QueryBuilder::for(Subject::class)
-            ->allowedFilters('code')
+            ->allowedFilters(['code'])
             ->get()
             ->toArray();
-    }
-
-    public function show(Subject $subject, Request $request): array
-    {
-        return $subject->toArray();
     }
 }
