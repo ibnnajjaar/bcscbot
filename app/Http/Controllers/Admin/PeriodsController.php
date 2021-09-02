@@ -48,6 +48,7 @@ class PeriodsController
     {
         $period->details = $periodsRequest->input('details');
         $period->weekday = $periodsRequest->input('weekday');
+        $period->location = $periodsRequest->input('location');
         $period->start_at = $periodsRequest->startAt();
         $period->end_at = $periodsRequest->endAt();
 

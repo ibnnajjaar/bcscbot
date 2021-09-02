@@ -15,6 +15,7 @@ class Period extends Model
         'start_at',
         'end_at',
         'weekday',
+        'location',
         'details',
     ];
 

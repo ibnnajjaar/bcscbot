@@ -19,6 +19,12 @@
         <x-jet-input-error for="weekday" class="mt-2"></x-jet-input-error>
     </div>
 
+    <div class="mb-4">
+        <x-jet-label for="location" value="{{ __('Location') }}"></x-jet-label>
+        <x-jet-input value="{{ $period->location }}" id="location" type="text" class="mt-1 block w-full" name="location" autocomplete="location"></x-jet-input>
+        <x-jet-input-error for="location" class="mt-2"></x-jet-input-error>
+    </div>
+
     <div class="flex flex-row w-full gap-4 mb-4">
         <div class="flex-grow">
             <x-jet-label for="start_at" value="{{ __('Start Time') }}"></x-jet-label>

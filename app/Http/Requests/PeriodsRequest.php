@@ -21,6 +21,7 @@ class PeriodsRequest extends FormRequest
             'end_at_hr' => 'numeric|between:0,24|gte:start_at_hr',
             'end_at_min' => 'numeric|between:0,59',
             'weekday' => 'in:' . implode(',', Weekdays::toLabels()),
+            'location' => 'nullable|string',
             'details' => 'nullable|string',
             'subject' => 'exists:subjects,id'
         ];
