@@ -16,7 +16,8 @@ class SubjectsRequest extends FormRequest
         $rules = [
             'name' => 'string',
             'code' => 'string|regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/',
-            'lecturer' => 'nullable|string'
+            'lecturer' => 'nullable|string',
+            'description' => 'nullable|string'
         ];
 
         if (! $this->route('subject')) {

@@ -14,6 +14,7 @@ class Subject extends Model
         'name',
         'code',
         'lecturer',
+        'description'
     ];
 
     public function periods(): HasMany
