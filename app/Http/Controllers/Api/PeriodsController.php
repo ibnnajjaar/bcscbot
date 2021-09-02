@@ -12,7 +12,7 @@ class PeriodsController extends Controller
     public function index(Request $request): array
     {
         return QueryBuilder::for(Period::class)
-            ->allowedFilters(['id', 'subject_id'])
+            ->allowedFilters(['id', 'subject_id', 'weekday'])
             ->allowedIncludes(['subject'])
             ->get()
             ->toArray();
