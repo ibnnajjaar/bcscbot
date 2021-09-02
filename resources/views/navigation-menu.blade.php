@@ -150,6 +150,15 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('admin.subjects.index') }}" :active="request()->routeIs('admin.subjects.*')">
+                {{ __('Subjects') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('admin.periods.index') }}" :active="request()->routeIs('admin.periods.*')">
+                {{ __('Periods') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('admin.assessments.index') }}" :active="request()->routeIs('admin.assessments.*')">
+                {{ __('Assessments') }}
+            </x-jet-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
