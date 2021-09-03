@@ -23,6 +23,25 @@ class HomeController extends Controller
             return $today != $key;
         });
 
-        return view('welcome', compact('active_group', 'inactive_group'));
+        /**
+         * Reorder the collection as per week day order
+         */
+        $ordered_inactive_group = collect();
+
+        $template = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+        foreach ($template as $day) {
+
+            $group = $inactive_group->filter(function ($group, $key) use ($day) {
+                return $day == $key;
+            });
+
+            if ($group->isNotEmpty()) {
+                $ordered_inactive_group = $ordered_inactive_group->concat([$day => $group]);
+            }
+
+        }
+
+        return view('welcome', compact('active_group', 'ordered_inactive_group'));
     }
 }
