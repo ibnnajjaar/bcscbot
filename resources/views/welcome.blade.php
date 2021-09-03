@@ -66,7 +66,7 @@
                                 <div class="px-1">-</div>
                                 <div>{{ $period->formatted_end_at }}</div>
                             </div>
-                            <div class="text-blue-dark">
+                            <div class="text-blue-light">
                                 {{ strtoupper($period->location) }}
                             </div>
                         </div>
