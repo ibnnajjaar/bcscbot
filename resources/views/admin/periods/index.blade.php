@@ -18,6 +18,7 @@
                     <x-slot name="thead">
                         <x-th>{{ __('Subject') }}</x-th>
                         <x-th>{{ __('Week Day') }}</x-th>
+                        <x-th>{{ __('Location') }}</x-th>
                         <x-th>{{ __('Start Time') }}</x-th>
                         <x-th>{{ __('End Time') }}</x-th>
                         <x-th>{{ __('Actions') }}</x-th>
@@ -28,6 +29,7 @@
                             <x-tr>
                                 <x-td>{{ optional($period->subject)->name }}</x-td>
                                 <x-td>{{ $period->weekday }}</x-td>
+                                <x-td>{{ $period->location }}</x-td>
                                 <x-td>{{ $period->start_at }}</x-td>
                                 <x-td>{{ $period->end_at }}</x-td>
                                 <x-td>

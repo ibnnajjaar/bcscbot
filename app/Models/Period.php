@@ -71,4 +71,13 @@ class Period extends Model
         return Carbon::parse($this->end_at)->format('i');
     }
 
+    public function getFormattedStartAtAttribute(): string
+    {
+        return Carbon::parse($this->start_at)->format('H:i');
+    }
+
+    public function getFormattedEndAtAttribute(): string
+    {
+        return Carbon::parse($this->end_at)->format('H:i');
+    }
 }
