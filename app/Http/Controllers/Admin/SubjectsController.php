@@ -12,10 +12,6 @@ class SubjectsController
     public function index(Request $request)
     {
         $subjects = Subject::all();
-
-        $request->session()->flash('flash.banner', 'Yay it works!');
-        $request->session()->flash('flash.bannerStyle', 'success');
-
         return view('admin.subjects.index', compact('subjects'));
     }
 
