@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
 {
@@ -28,10 +29,10 @@ class UsersSeeder extends Seeder
                 continue;
             }
 
-            $user = (new CreateNewUser())->create([
+            $user = User::create([
                 'name' => $user_data['name'],
                 'email' => $user_data['email'],
-                'password' => $user_data['password'],
+                'password' => Hash::make($user_data['password']),
             ]);
 
             $user->email_verified_at = Carbon::now();
