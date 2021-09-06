@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\Weekdays;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersRequest;
 use App\Models\User;
-use App\Models\Subject;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController
+class UsersController extends Controller
 {
+    use AuthorizesRequests;
+
+    public function __construct()
+    {
+        $this->authorizeResource(User::class);
+    }
+
     public function index(Request $request)
     {
         $users = User::all();
