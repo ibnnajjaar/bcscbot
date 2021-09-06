@@ -1,64 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# API Documentation
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Following are the endpoints and resulting json formats
 
-## About Laravel
+## Subjects
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Use the following format to retrieve all subjects
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+https://bcsc.abunooh.com/api/subjects
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+***Result***
 
-## Learning Laravel
+```json
+[
+    {
+        "id": 1,
+        "name": "Advanced Networking and Telecommunications",
+        "code": "CPT229",
+        "lecturer": "Thoriq",
+        "created_at": "2021-09-02T08:44:00.000000Z",
+        "updated_at": "2021-09-02T08:44:00.000000Z",
+        "description": null
+    }
+]
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Use the following format to retrieve a specific subject using its code (example to retrieve subject with code **CPT241**). Currently subjects can be filtered by code only.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+https://bcsc.abunooh.com/api/subjects?filter[code]=CPT241
+```
 
-## Laravel Sponsors
+Resulting *JSON* format will remain the same as above example.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+## Periods
 
-## Contributing
+Use the following format to retrieve all periods
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+https://bcsc.abunooh.com/api/periods
+```
 
-## Code of Conduct
+***Result***
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```json
+[
+    {
+        "id": 1,
+        "subject_id": 1,
+        "start_at": "18:00:00",
+        "end_at": "20:00:00",
+        "weekday": "sunday",
+        "details": null,
+        "created_at": "2021-09-02T08:45:32.000000Z",
+        "updated_at": "2021-09-05T13:11:41.000000Z",
+        "location": "Q3-09 (Lab-30)"
+    }
+]
+```
 
-## Security Vulnerabilities
+Use the following to retrieve a specific period using its id, subject id or weekday
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+https://bcsc.abunooh.com/api/periods?filter[weekday]=thursday
+https://bcsc.abunooh.com/api/periods?filter[id]=8
+https://bcsc.abunooh.com/api/periods?filter[subject_id]=1
+```
 
-## License
+The expecting json format will remain the same as above.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+You may also retrieve the data of corresponding subjects with the periods by adding **include=subject**
+
+```
+https://bcsc.abunooh.com/api/periods?include=subject
+```
+
+The resulting *JSON* will be as follows
+
+```json
+[
+    {
+        "id": 1,
+        "subject_id": 1,
+        "start_at": "18:00:00",
+        "end_at": "20:00:00",
+        "weekday": "sunday",
+        "details": null,
+        "created_at": "2021-09-02T08:45:32.000000Z",
+        "updated_at": "2021-09-05T13:11:41.000000Z",
+        "location": "Q3-09 (Lab-30)",
+        "subject": {
+            "id": 1,
+            "name": "Advanced Networking and Telecommunications",
+            "code": "CPT229",
+            "lecturer": "Thoriq",
+            "created_at": "2021-09-02T08:44:00.000000Z",
+            "updated_at": "2021-09-02T08:44:00.000000Z",
+            "description": null
+        }
+    }
+]
+```
+
+You may mix parameters to change the output json as you require.
+
+
+
+## Assessments
+
+Assessments can also be filtered using the below format
+
+```
+https://bcsc.abunooh.com/api/assessments
+```
+
+Assesments can also be filtered by its **id**, **subject_id** and **type** and can query its respective subject using the **include=subject**.
+
+
+
+## Author
+
+- [abunooh](https://abunooh.com)
