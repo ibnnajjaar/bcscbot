@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\CalculateWeek;
 use App\Actions\CountStuff;
 use App\Models\Period;
 use Illuminate\Http\Request;
@@ -53,7 +52,7 @@ class HomeController extends Controller
         $assignment_count = (new CountStuff())->assignments();
         $exam_count = (new CountStuff())->exams();
 
-        return view('welcome', compact(
+        return view('web.home.index', compact(
             'active_group',
             'ordered_inactive_group',
             'week_no',

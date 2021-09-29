@@ -1,10 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AssessmentsController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PeriodsController;
-use App\Http\Controllers\Admin\SubjectsController;
-use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\AssessmentsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,25 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+include('admin.php');
+
 Route::get('/', HomeController::class);
+Route::get('/assessments', [AssessmentsController::class, 'index'])->name('assessments.index');
+Route::get('/assessments/{assessment}', [AssessmentsController::class, 'show'])->name('assessments.show');
 
-Route::group([
-        'middleware' => [
-            'auth:sanctum',
-            'verified',
-        ],
-    ], function () {
-
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
-
-    Route::group([
-        'as' => 'admin.'
-    ], function () {
-
-        Route::resource('users', UsersController::class)->except('show');
-        Route::resource('subjects', SubjectsController::class)->except('show');
-        Route::resource('periods', PeriodsController::class)->except('show');
-        Route::resource('assessments', AssessmentsController::class)->except('show');
-
-    });
-});
