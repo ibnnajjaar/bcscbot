@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CalculateWeek;
+use App\Actions\CountStuff;
 use App\Models\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -46,6 +48,18 @@ class HomeController extends Controller
 
         }
 
-        return view('welcome', compact('active_group', 'ordered_inactive_group'));
+        $week_no = (new CountStuff())->week();
+        $tutorial_count = (new CountStuff())->tutorials();
+        $assignment_count = (new CountStuff())->assignments();
+        $exam_count = (new CountStuff())->exams();
+
+        return view('welcome', compact(
+            'active_group',
+            'ordered_inactive_group',
+            'week_no',
+            'tutorial_count',
+            'assignment_count',
+            'exam_count',
+        ));
     }
 }

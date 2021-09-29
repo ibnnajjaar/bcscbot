@@ -20,13 +20,31 @@
         </style>
     </head>
     <body class="antialiased bg-gray-lightest">
-    <div class="flex flex-row justify-center items-center mt-8 mx-4">
+    <div class="flex flex-row items-center mt-8 mx-4">
         <h3 class="text-2xl font-semibold flex flex-col">
             <span class="text-gray-welcome">{{ __('Welcome to') }}</span>
-            <span class="text-blue-dark">{{ __("Bachelors Of Computer Science") }}</span>
-            <span class="text-blue-dark">{{ __("Semester 4") }}</span>
+            <span class="text-blue-dark">{{ __("BCSc - Sem 4") }}</span>
+            <span class="text-blue-dark">{{ __("Week #:week", ['week' => $week_no]) }}</span>
         </h3>
     </div>
+
+        <div class="text-gray-lightest bg-green-500 rounded-lg p-4 m-4 mt-8 relative">
+            <div class="font-medium flex flex-row justify-between">
+                <span class="flex-nonw">{{ __("TUTORIALS") }}</span>
+                <span class="mx-2 flex-auto border-b-2 border-dotted border-white h-4"></span>
+                <span class="flex-nonw">{{ $tutorial_count }}</span>
+            </div>
+            <div class="font-medium flex flex-row justify-between">
+                <span class="flex-nonw">{{ __("ASSIGNMENTS") }}</span>
+                <span class="mx-2 flex-auto border-b-2 border-dotted border-white h-4"></span>
+                <span class="flex-nonw">{{ $assignment_count }}</span>
+            </div>
+            <div class="font-medium flex flex-row justify-between">
+                <span class="flex-nonw">{{ __("EXAMS") }}</span>
+                <span class="mx-2 flex-auto border-b-2 border-dotted border-white h-4"></span>
+                <span class="flex-nonw">{{ $exam_count }}</span>
+            </div>
+        </div>
 
         @if ($active_group)
             @foreach ($active_group as $day_name => $periods)
