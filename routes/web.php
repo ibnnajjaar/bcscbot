@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 include('admin.php');
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 Route::get('/assessments', [AssessmentsController::class, 'index'])->name('assessments.index');
 Route::get('/assessments/{assessment}', [AssessmentsController::class, 'show'])->name('assessments.show');
 

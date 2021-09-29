@@ -33,4 +33,9 @@ class Assessment extends Model
     {
         return Str::title($this->type);
     }
+
+    public function getFormattedAssessmentAtAttribute()
+    {
+        return optional($this->assessment_at)->format('d M Y H:i');
+    }
 }

@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=ea5c7ca06c4b9eab5797",
-    "/css/app.css": "/css/app.css?id=de7fd5e3775cbeebf994",
-    "/vendors/css/sweetalert2.min.css": "/vendors/css/sweetalert2.min.css?id=acba84b170074fea14bb",
-    "/js/vendors.js": "/js/vendors.js?id=a9658dd9e0b5b7f0fc1c"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/vendors/css/sweetalert2.min.css": "/vendors/css/sweetalert2.min.css",
+    "/js/vendors.js": "/js/vendors.js"
 }

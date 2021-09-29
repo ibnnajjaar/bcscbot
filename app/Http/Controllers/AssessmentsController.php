@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\CountStuff;
+use App\Models\Assessment;
 use Illuminate\Http\Request;
 
 class AssessmentsController extends Controller
@@ -10,6 +11,12 @@ class AssessmentsController extends Controller
 
     public function index(Request $request)
     {
-        return view('web.assessments.index');
+        $subject_assessments = Assessment::query()
+            ->orderBy('assessment_at')
+            ->with('subject')
+            ->get()
+            ->groupBy('subject_id','type');
+
+        return view('web.assessments.index', compact('subject_assessments'));
     }
 }
